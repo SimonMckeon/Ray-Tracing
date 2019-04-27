@@ -17,8 +17,8 @@ type Scene struct {
 
 func main() {
 	scene := Scene{
-		Width:  200,
-		Height: 100,
+		Width:  800,
+		Height: 600,
 		Fov:    90.0,
 		Sphere: Sphere{
 			Center: Vec3{
