@@ -4,10 +4,10 @@ import (
 	"image"
 	"image/color"
 	"image/png"
-	"log"
 	"os"
 )
 
+// Scene represents a single scene.
 type Scene struct {
 	Width  uint
 	Height uint
@@ -44,11 +44,9 @@ func main() {
 
 func render(scene *Scene) *image.RGBA {
 	img := image.NewRGBA(image.Rect(0, 0, int(scene.Width), int(scene.Height)))
-	count := 0
 	for x := uint(0); x < scene.Width; x++ {
 		for y := uint(0); y < scene.Height; y++ {
 			ray := CreatePrime(x, y, scene)
-			count++
 
 			if scene.Sphere.intersect(&ray) {
 				img.Set(int(x), int(y), scene.Sphere.Color)
@@ -58,6 +56,5 @@ func render(scene *Scene) *image.RGBA {
 		}
 	}
 
-	log.Printf("Done!")
 	return img
 }
